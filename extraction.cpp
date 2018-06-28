@@ -115,10 +115,10 @@ int Extraction::loadInput(cv::Mat imgOriginal, cv::Mat imgSkeleton, cv::Mat orie
     this->input.quality = fpQuality;
     this->input.loaded = true;
 
-    if (this->input.one.imgOriginal.channels() != 1) cv::cvtColor(this->input.one.imgOriginal, this->input.one.imgOriginal, CV_BGR2GRAY);
-    if (this->input.one.imgSkeleton.channels() != 1) cv::cvtColor(this->input.one.imgSkeleton, this->input.one.imgSkeleton, CV_BGR2GRAY);
-    if (this->input.one.imgSkeletonInverted.channels() != 1) cv::cvtColor(this->input.one.imgSkeletonInverted, this->input.one.imgSkeletonInverted, CV_BGR2GRAY);
-    if (this->input.one.qualityMap.channels() != 1) cv::cvtColor(this->input.one.qualityMap, this->input.one.qualityMap, CV_BGR2GRAY);
+    if (this->input.one.imgOriginal.channels() != 1) cv::cvtColor(this->input.one.imgOriginal, this->input.one.imgOriginal, cv::COLOR_BGR2GRAY);
+    if (this->input.one.imgSkeleton.channels() != 1) cv::cvtColor(this->input.one.imgSkeleton, this->input.one.imgSkeleton, cv::COLOR_BGR2GRAY);
+    if (this->input.one.imgSkeletonInverted.channels() != 1) cv::cvtColor(this->input.one.imgSkeletonInverted, this->input.one.imgSkeletonInverted, cv::COLOR_BGR2GRAY);
+    if (this->input.one.qualityMap.channels() != 1) cv::cvtColor(this->input.one.qualityMap, this->input.one.qualityMap, cv::COLOR_BGR2GRAY);
 
     return 1;
 }
@@ -134,10 +134,10 @@ int Extraction::loadInput(PREPROCESSING_RESULTS preprocessingResults)
     this->input.quality = 100;
     this->input.loaded = true;
 
-    if (this->input.one.imgOriginal.channels() != 1) cv::cvtColor(this->input.one.imgOriginal, this->input.one.imgOriginal, CV_BGR2GRAY);
-    if (this->input.one.imgSkeleton.channels() != 1) cv::cvtColor(this->input.one.imgSkeleton, this->input.one.imgSkeleton, CV_BGR2GRAY);
-    if (this->input.one.imgSkeletonInverted.channels() != 1) cv::cvtColor(this->input.one.imgSkeletonInverted, this->input.one.imgSkeletonInverted, CV_BGR2GRAY);
-    if (this->input.one.qualityMap.channels() != 1) cv::cvtColor(this->input.one.qualityMap, this->input.one.qualityMap, CV_BGR2GRAY);
+    if (this->input.one.imgOriginal.channels() != 1) cv::cvtColor(this->input.one.imgOriginal, this->input.one.imgOriginal, cv::COLOR_BGR2GRAY);
+    if (this->input.one.imgSkeleton.channels() != 1) cv::cvtColor(this->input.one.imgSkeleton, this->input.one.imgSkeleton, cv::COLOR_BGR2GRAY);
+    if (this->input.one.imgSkeletonInverted.channels() != 1) cv::cvtColor(this->input.one.imgSkeletonInverted, this->input.one.imgSkeletonInverted, cv::COLOR_BGR2GRAY);
+    if (this->input.one.qualityMap.channels() != 1) cv::cvtColor(this->input.one.qualityMap, this->input.one.qualityMap, cv::COLOR_BGR2GRAY);
 
     return 1;
 }
@@ -157,10 +157,10 @@ int Extraction::loadInput(QMap<QString, PREPROCESSING_RESULTS> preprocessingResu
     this->input.keys.clear();
     for (auto i = this->input.sequence.begin(); i != this->input.sequence.end(); ++i) {
         this->input.keys.push_back(i.key());
-        if (i.value().imgOriginal.channels() != 1) cv::cvtColor(i.value().imgOriginal, i.value().imgOriginal, CV_BGR2GRAY);
-        if (i.value().imgSkeleton.channels() != 1) cv::cvtColor(i.value().imgSkeleton, i.value().imgSkeleton, CV_BGR2GRAY);
-        if (i.value().imgSkeletonInverted.channels() != 1) cv::cvtColor(i.value().imgSkeletonInverted, i.value().imgSkeletonInverted, CV_BGR2GRAY);
-        if (i.value().qualityMap.channels() != 1) cv::cvtColor(i.value().qualityMap, i.value().qualityMap, CV_BGR2GRAY);
+        if (i.value().imgOriginal.channels() != 1) cv::cvtColor(i.value().imgOriginal, i.value().imgOriginal, cv::COLOR_BGR2GRAY);
+        if (i.value().imgSkeleton.channels() != 1) cv::cvtColor(i.value().imgSkeleton, i.value().imgSkeleton, cv::COLOR_BGR2GRAY);
+        if (i.value().imgSkeletonInverted.channels() != 1) cv::cvtColor(i.value().imgSkeletonInverted, i.value().imgSkeletonInverted, cv::COLOR_BGR2GRAY);
+        if (i.value().qualityMap.channels() != 1) cv::cvtColor(i.value().qualityMap, i.value().qualityMap, cv::COLOR_BGR2GRAY);
     }
 
     return 1;

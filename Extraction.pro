@@ -22,6 +22,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+QMAKE_CFLAGS_ISYSTEM=
+
 SOURCES += \
     extraction.cpp \
     crossingnumber.cpp \
@@ -51,7 +53,18 @@ INCLUDEPATH += $$PWD/../../../../../opt/cuda/include
 DEPENDPATH += $$PWD/../../../../../opt/cuda/include
 
 #Caffe
-unix:!macx: LIBS += -L$$PWD/../../../../../usr/lib64/ -lcaffe
-unix:!macx: LIBS += -L$$PWD/../../../../../usr/lib64/ -lboost_system
-unix:!macx: LIBS += -L$$PWD/../../../../../usr/lib64/ -lglog
-unix:!macx: LIBS += -L$$PWD/../../../../../usr/lib64/ -lprotobuf
+unix:!macx: LIBS += -L$$PWD/../../../../../usr/local/lib64/ -lcaffe
+INCLUDEPATH += $$PWD/../../../../../usr/local/include
+DEPENDPATH += $$PWD/../../../../../usr/local/include
+
+unix:!macx: LIBS += -L$$PWD/../../../../../usr/lib/ -lboost_system
+INCLUDEPATH += $$PWD/../../../../../usr/include
+DEPENDPATH += $$PWD/../../../../../usr/include
+
+unix:!macx: LIBS += -L$$PWD/../../../../../usr/lib/ -lglog
+INCLUDEPATH += $$PWD/../../../../../usr/include
+DEPENDPATH += $$PWD/../../../../../usr/include
+
+unix:!macx: LIBS += -L$$PWD/../../../../../usr/lib/ -lprotobuf
+INCLUDEPATH += $$PWD/../../../../../usr/include
+DEPENDPATH += $$PWD/../../../../../usr/include
