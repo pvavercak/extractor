@@ -48,23 +48,23 @@ unix {
 }
 
 #CUDA
-unix:!macx: LIBS += -L$$PWD/../../../../../opt/cuda/lib64/ -lcudart
-INCLUDEPATH += $$PWD/../../../../../opt/cuda/include
-DEPENDPATH += $$PWD/../../../../../opt/cuda/include
+unix:!macx: LIBS += -L/opt/cuda/lib64/ -lcudart
+INCLUDEPATH += /opt/cuda/include
+DEPENDPATH += /opt/cuda/include
 
 #Caffe
-unix:!macx: LIBS += -L$$PWD/../../../../../usr/local/lib64/ -lcaffe
-INCLUDEPATH += $$PWD/../../../../../usr/local/include
-DEPENDPATH += $$PWD/../../../../../usr/local/include
+unix:!macx: LIBS += -L/usr/local/lib64/ -lcaffe
+INCLUDEPATH += /usr/local/include
+DEPENDPATH += /usr/local/include
 
-unix:!macx: LIBS += -L$$PWD/../../../../../usr/lib/ -lboost_system
-INCLUDEPATH += $$PWD/../../../../../usr/include
-DEPENDPATH += $$PWD/../../../../../usr/include
+unix:!macx: LIBS += -L/usr/lib/ -lboost_system
+INCLUDEPATH += /usr/include
+DEPENDPATH += /usr/include
 
-unix:!macx: LIBS += -L$$PWD/../../../../../usr/lib/ -lglog
-INCLUDEPATH += $$PWD/../../../../../usr/include
-DEPENDPATH += $$PWD/../../../../../usr/include
+unix:!macx: LIBS += -L/usr/lib/ -lglog
+INCLUDEPATH += /usr/include
+DEPENDPATH += /usr/include
 
-unix:!macx: LIBS += -L$$PWD/../../../../../usr/lib/ -lprotobuf
-INCLUDEPATH += $$PWD/../../../../../usr/include
-DEPENDPATH += $$PWD/../../../../../usr/include
+unix:!macx: LIBS += -L/usr/lib/ -lprotobuf
+INCLUDEPATH += /usr/include
+DEPENDPATH += /usr/include
