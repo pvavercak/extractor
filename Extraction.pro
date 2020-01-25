@@ -6,6 +6,7 @@ DEFINES += EXTRACTION_LIBRARY
 DEFINES += QT_DEPRECATED_WARNINGS
 DEFINES += CPU_ONLY
 DEFINES -= NO_CPU
+DEFINES += BOOST_SYSTEM_NO_DEPRECATED
 
 QMAKE_CFLAGS_ISYSTEM=
 
@@ -32,15 +33,11 @@ unix {
     INSTALLS += target
 }
 
-#CUDA
-#unix:!macx: LIBS += -L/opt/cuda/lib64/ -lcudart
-#INCLUDEPATH += /opt/cuda/include
-#DEPENDPATH += /opt/cuda/include
-
 #Caffe
-unix:!macx: LIBS += -L/usr/local/lib64/ -lcaffe
-INCLUDEPATH += /home/pva/caffe/include
-DEPENDPATH += /home/pva/caffe/include
+unix:!macx: LIBS += -L/usr/lib/x86_64-linux-gnu -lcaffe
+INCLUDEPATH += /usr/include/caffe \
+               /usr/include/caffe/proto \
+               /usr/include/caffe/util \
 
 unix:!macx: LIBS += -L/usr/lib/ -lboost_system
 INCLUDEPATH += /usr/include
@@ -53,3 +50,5 @@ DEPENDPATH += /usr/include
 unix:!macx: LIBS += -L/usr/lib/ -lprotobuf
 INCLUDEPATH += /usr/include
 DEPENDPATH += /usr/include
+
+
