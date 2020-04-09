@@ -2,6 +2,7 @@
 
 Extraction::Extraction()
 {
+    fLI::FLAGS_minloglevel=3;
     this->extractionIsRunning = false;
 
     // INPUT PARAMS
