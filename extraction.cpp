@@ -150,6 +150,7 @@ int Extraction::loadInput(QMap<QString, PREPROCESSING_RESULTS> preprocessingResu
         return -1;
     }
 
+    this->input.cnt = 0;
     this->input.sequence = preprocessingResults;
     this->input.isSequence = true;
     this->input.quality = 100;
