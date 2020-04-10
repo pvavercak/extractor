@@ -131,6 +131,8 @@ int Extraction::loadInput(PREPROCESSING_RESULTS preprocessingResults)
         return -1;
     }
 
+    this->input.isSequence = false;
+    this->input.sequence.clear();
     this->input.one = preprocessingResults;
     this->input.quality = 100;
     this->input.loaded = true;
