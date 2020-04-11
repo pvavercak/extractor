@@ -46,6 +46,7 @@ typedef struct preprocessing_results {
     cv::Mat imgSkeletonInverted;
     cv::Mat qualityMap;
     cv::Mat orientationMap;
+    qintptr requester;
 } PREPROCESSING_RESULTS;
 #define PREPROCESSING_RESULTS_DEFINED
 #endif

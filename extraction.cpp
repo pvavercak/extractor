@@ -10,7 +10,7 @@ Extraction::Extraction()
     this->input.cnt = 0;
     this->input.quality = 100;
     this->input.loaded = false;
-
+    this->requester = -1;
     //EXTRACTION FEATURES
     this->extractionFeatures.useISOConverter = false;
     this->extractionFeatures.useOrientationFixer = true;
@@ -101,13 +101,14 @@ int Extraction::setCPUOnly(bool enabled)
     return 1;
 }
 
-int Extraction::loadInput(cv::Mat imgOriginal, cv::Mat imgSkeleton, cv::Mat orientationMap, int fpQuality, cv::Mat qualityMap, cv::Mat imgSkeletonInverted)
+int Extraction::loadInput(cv::Mat imgOriginal, cv::Mat imgSkeleton, cv::Mat orientationMap, int fpQuality, cv::Mat qualityMap, cv::Mat imgSkeletonInverted, const qintptr& requester)
 {
     if (this->extractionIsRunning) {
         this->extractionError(10);
         return -1;
     }
 
+    this->requester = requester;
     this->input.one.imgOriginal = imgOriginal.clone();
     this->input.one.imgSkeleton = imgSkeleton.clone();
     this->input.one.imgSkeletonInverted = imgSkeletonInverted.clone();
@@ -131,6 +132,7 @@ int Extraction::loadInput(PREPROCESSING_RESULTS preprocessingResults)
         return -1;
     }
 
+    this->requester = preprocessingResults.requester;
     this->input.isSequence = false;
     this->input.sequence.clear();
     this->input.one = preprocessingResults;
@@ -145,13 +147,14 @@ int Extraction::loadInput(PREPROCESSING_RESULTS preprocessingResults)
     return 1;
 }
 
-int Extraction::loadInput(QMap<QString, PREPROCESSING_RESULTS> preprocessingResults)
+int Extraction::loadInput(QMap<QString, PREPROCESSING_RESULTS> preprocessingResults, const qintptr& requester)
 {
     if (this->extractionIsRunning) {
         this->extractionError(10);
         return -1;
     }
 
+    this->requester = requester;
     this->input.cnt = 0;
     this->input.sequence = preprocessingResults;
     this->input.isSequence = true;
@@ -207,6 +210,7 @@ void Extraction::startExtraction(const PREPROCESSING_RESULTS &input)
 
     this->results.minutiaePredicted = this->neuralChecker.getCheckedMinutiae();
 
+    this->results.requester = this->requester;
     if (this->extractionFeatures.useOrientationFixer) {        
         //INVERTED CROSSING NUMBER
         this->crossingNumber.setParams(input.imgSkeletonInverted, input);

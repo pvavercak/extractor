@@ -21,6 +21,7 @@ typedef struct extraction_results {
     QVector<MINUTIA> minutiaePredicted;
     QVector<MINUTIA> minutiaePredictedFixed;
     unsigned char * minutiaeISO;
+    qintptr requester;
 } EXTRACTION_RESULTS;
 
 class EXTRACTIONSHARED_EXPORT Extraction : public QThread
@@ -31,9 +32,9 @@ public:
     Extraction();
 
     // REQUIRED
-    int loadInput(cv::Mat imgOriginal, cv::Mat imgSkeleton, cv::Mat orientationMap, int fpQuality = 100, cv::Mat qualityMap = cv::Mat(0,0,CV_8UC1), cv::Mat imgSkeletonInverted = cv::Mat(0,0,CV_8UC1));
+    int loadInput(cv::Mat imgOriginal, cv::Mat imgSkeleton, cv::Mat orientationMap, int fpQuality = 100, cv::Mat qualityMap = cv::Mat(0,0,CV_8UC1), cv::Mat imgSkeletonInverted = cv::Mat(0,0,CV_8UC1), const qintptr& requester = -1);
     int loadInput(PREPROCESSING_RESULTS preprocessingResults);
-    int loadInput(QMap<QString, PREPROCESSING_RESULTS> preprocessingResults);
+    int loadInput(QMap<QString, PREPROCESSING_RESULTS> preprocessingResults, const qintptr& requester);
 
     void run();
 
@@ -58,6 +59,7 @@ private:
     EXTRACTION_PARAMS extractionParams;
     EXTRACTION_FEATURES extractionFeatures;
 
+    qintptr requester;
     // PARAMS
     NEURAL_CHECKER_PARAMS neuralCheckerParams;
 
