@@ -38,6 +38,7 @@ unix:!macx: LIBS += -L/usr/lib/x86_64-linux-gnu -lcaffe
 INCLUDEPATH += /usr/include/caffe \
                /usr/include/caffe/proto \
                /usr/include/caffe/util \
+               /usr/include/opencv4
 
 unix:!macx: LIBS += -L/usr/lib/ -lboost_system
 INCLUDEPATH += /usr/include
